@@ -1,4 +1,4 @@
-class Menu {
+class Opcoes {
   static const perguntas = [
     {
       "Prato": "Dia a dia",

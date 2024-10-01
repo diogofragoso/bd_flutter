@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/09/2024 às 22:12
+-- Tempo de geração: 01/10/2024 às 21:12
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -45,6 +45,37 @@ INSERT INTO `acompanhamentos` (`id_acompanhamentos`, `nome_acompanhamentos`) VAL
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `menu`
+--
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL,
+  `id_pratos_fk` int(11) NOT NULL,
+  `id_acompanhamentos_fk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pedido`
+--
+
+CREATE TABLE `pedido` (
+  `id_pedido` int(11) NOT NULL,
+  `menu_fk` int(11) NOT NULL,
+  `data_pedido` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `pedido`
+--
+
+INSERT INTO `pedido` (`id_pedido`, `menu_fk`, `data_pedido`) VALUES
+(1, 1, '2024-10-02');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `pratos`
 --
 
@@ -62,18 +93,6 @@ CREATE TABLE `pratos` (
 INSERT INTO `pratos` (`id_prato`, `nome_prato`, `descricao_prato`, `disponivel_prato`) VALUES
 (1, 'Dia a dia', 'Uma delicia', 1);
 
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `pratos_acompanhamentos`
---
-
-CREATE TABLE `pratos_acompanhamentos` (
-  `id_pratos_acompanhamentos` int(11) NOT NULL,
-  `id_pratos_fk` int(11) NOT NULL,
-  `id_acompanhamentos_fk` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Índices para tabelas despejadas
 --
@@ -85,18 +104,24 @@ ALTER TABLE `acompanhamentos`
   ADD PRIMARY KEY (`id_acompanhamentos`);
 
 --
+-- Índices de tabela `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`),
+  ADD KEY `fk_pratos` (`id_pratos_fk`),
+  ADD KEY `fk_acompanhamentos` (`id_acompanhamentos_fk`);
+
+--
+-- Índices de tabela `pedido`
+--
+ALTER TABLE `pedido`
+  ADD PRIMARY KEY (`id_pedido`);
+
+--
 -- Índices de tabela `pratos`
 --
 ALTER TABLE `pratos`
   ADD PRIMARY KEY (`id_prato`);
-
---
--- Índices de tabela `pratos_acompanhamentos`
---
-ALTER TABLE `pratos_acompanhamentos`
-  ADD PRIMARY KEY (`id_pratos_acompanhamentos`),
-  ADD KEY `fk_pratos` (`id_pratos_fk`),
-  ADD KEY `fk_acompanhamentos` (`id_acompanhamentos_fk`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -109,25 +134,31 @@ ALTER TABLE `acompanhamentos`
   MODIFY `id_acompanhamentos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de tabela `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `pedido`
+--
+ALTER TABLE `pedido`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `pratos`
 --
 ALTER TABLE `pratos`
   MODIFY `id_prato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `pratos_acompanhamentos`
---
-ALTER TABLE `pratos_acompanhamentos`
-  MODIFY `id_pratos_acompanhamentos` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- Restrições para tabelas despejadas
 --
 
 --
--- Restrições para tabelas `pratos_acompanhamentos`
+-- Restrições para tabelas `menu`
 --
-ALTER TABLE `pratos_acompanhamentos`
+ALTER TABLE `menu`
   ADD CONSTRAINT `fk_acompanhamentos` FOREIGN KEY (`id_acompanhamentos_fk`) REFERENCES `acompanhamentos` (`id_acompanhamentos`);
 COMMIT;
 
