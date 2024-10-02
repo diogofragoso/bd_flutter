@@ -64,6 +64,8 @@ class Menu extends StatelessWidget {
 
 
 class Data extends StatelessWidget {
+  const Data({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Obtém a data atual
@@ -74,7 +76,7 @@ class Data extends StatelessWidget {
 
     return Center(             
         child: Text(
-          '$dataFormatada',
+          dataFormatada,
           style: TextStyle(fontSize: 10),
         ),
       

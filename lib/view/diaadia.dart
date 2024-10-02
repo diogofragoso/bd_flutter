@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:bandodedados/controller/bd.dart';
-
-Bd bd = Bd();
+import '../model/bd.dart';
 
 
-class Diaadia extends StatelessWidget {
+
+
+class Diaadia extends StatefulWidget {
   const Diaadia({super.key});
 
   @override
+  State<Diaadia> createState() => _DiaadiaState();
+}
+
+class _DiaadiaState extends State<Diaadia> {
+  @override
   Widget build(BuildContext context) {
+
+
+    Future<void> _fazerPedido(String prato, String data) async {
+      await Bd.instance.fazerPedido(prato, data);
+    } 
+
     return MaterialApp(
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
-          title: Center(child: const Text('Dia a dia')),
+          title: const Center(child: Text('Dia a dia')),
         ),
         body: Column(
           children: [
@@ -22,13 +33,25 @@ class Diaadia extends StatelessWidget {
               children: [              
               ElevatedButton(onPressed: () {
                 print('Fazendo o pedido');
-                bd.inserir();
-              }, child: Text("Fazer pedido")),
+                _fazerPedido('Dia a dia', '2024-10-02');              
+                
+              }, child: const Text("Fazer pedido")),
             ],),
-            Row(children: [],),
-            Row(children: [],),
-            Row(children: [],),
-            Row(children: [],),
+
+
+              Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [              
+              ElevatedButton(onPressed: () {
+              
+                Navigator.pushNamed(context, '/pedidos');              
+                
+              }, child: const Text("Fazer pedido")),
+            ],),
+            const Row(children: [],),
+            const Row(children: [],),
+            const Row(children: [],),
+            const Row(children: [],),
           ],
         ),
 
@@ -42,4 +65,6 @@ class Diaadia extends StatelessWidget {
       ),
     );
   }
+  
+  
 }

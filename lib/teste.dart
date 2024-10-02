@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:bandodedados/view/pedido.dart';
 import 'package:flutter/material.dart';
 import 'view/menu.dart';
 import 'view/diaadia.dart';
@@ -18,9 +17,9 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
       routes: {
         '/diaadia': (context) => Diaadia(),
-        '/pedidos': (context) => Pedido(),
       
       },
+
 
 
 
