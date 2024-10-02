@@ -46,7 +46,7 @@ class _DiaadiaState extends State<Diaadia> {
               
                 Navigator.pushNamed(context, '/pedidos');              
                 
-              }, child: const Text("Fazer pedido")),
+              }, child: const Text("Visualizar pedidos")),
             ],),
             const Row(children: [],),
             const Row(children: [],),

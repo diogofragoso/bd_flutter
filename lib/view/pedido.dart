@@ -127,10 +127,13 @@ class _PedidoScreenState extends State<PedidoScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        
+        // child: Icon(Icons.add),
+        child: Icon(Icons.back_hand),
         onPressed: () {
           // Exemplo para adicionar um novo pedido
-          _addPedido('Speciale', '2024-10-02'); // Adiciona um novo pedido
+          // _addPedido('Speciale', '2024-10-02'); // Adiciona um novo pedido
+          Navigator.pushNamed(context, '/');
         },
       ),
     );
