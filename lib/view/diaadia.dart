@@ -16,14 +16,43 @@ class _DiaadiaState extends State<Diaadia> {
   Widget build(BuildContext context) {
 
 
+      void exibirAlerta(String msg) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title:  Text('Atenção'),
+              content: Text(msg),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+
     Future<void> _fazerPedido(String prato, String data) async {
+
+      try {        
       await Bd.instance.fazerPedido(prato, data);
+      exibirAlerta('Pedido realizado com sucesso!');
+      } catch (e) {
+        exibirAlerta('Erro ao realizar o pedido:  $e');
+        print(e);
+      }
     } 
 
     return MaterialApp(
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.blue[500],
           title: const Center(child: Text('Dia a dia')),
         ),
         body: Column(
@@ -48,7 +77,13 @@ class _DiaadiaState extends State<Diaadia> {
                 
               }, child: const Text("Visualizar pedidos")),
             ],),
-            const Row(children: [],),
+             Row(children: [
+                ElevatedButton(onPressed: () {
+                 Navigator.pushReplacementNamed(context, '/');
+
+                }, child: Text('Voltar'))
+
+            ],),
             const Row(children: [],),
             const Row(children: [],),
             const Row(children: [],),

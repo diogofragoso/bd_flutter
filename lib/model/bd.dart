@@ -9,7 +9,6 @@ class Bd {
 
   // Singleton para garantir que uma única instância do banco seja usada
   static final Bd instance = Bd._privateConstructor();
-
   Bd._privateConstructor();
 
   // Método para obter a instância do banco de dados

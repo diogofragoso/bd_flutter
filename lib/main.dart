@@ -1,11 +1,7 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:bandodedados/view/pedido.dart';
 import 'package:flutter/material.dart';
 import 'view/menu.dart';
 import 'view/diaadia.dart';
-
-
 
 void main() => runApp(const MyApp());
 
@@ -15,33 +11,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-          initialRoute: '/',
-      routes: {         
+      initialRoute: '/',  // Usamos apenas initialRoute
+      routes: {
+        '/': (context) => Home(), // Página inicial
         '/diaadia': (context) => Diaadia(),
         '/pedidos': (context) => Pedido(),
-      
       },
-
-
-
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          elevation: 0,
-          titleSpacing: 0,
-          leading:Data(),
-          backgroundColor: Colors.orange,
-          title: Center(child: const Text('Escolha sua refeição '),
-           
-              
-          ),
-        ),
-        body: const Center(
-          child: Menu(),
-        ),
-      ),
     );
   }
 }
 
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        titleSpacing: 0,
+        leading: Data(),
+        backgroundColor: Colors.orange,
+        title: Center(
+          child: const Text('Escolha sua refeição'),
+        ),
+      ),
+      body: const Center(
+        child: Menu(),
+      ),
+    );
+  }
+}

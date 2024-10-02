@@ -4,9 +4,7 @@ import 'package:bandodedados/model/bd.dart'; // Importe a classe Bd
 class Pedido extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PedidoScreen(),
-    );
+    return PedidoScreen(); // Apenas retorna a tela de pedido
   }
 }
 
@@ -56,8 +54,8 @@ class _PedidoScreenState extends State<PedidoScreen> {
     TextEditingController dataController = TextEditingController(text: data);
 
     showDialog(
-      context: context, // Passa o BuildContext corretamente
-      builder: (BuildContext context) { // Use BuildContext aqui
+      context: context,
+      builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Atualizar Pedido"),
           content: Column(
@@ -111,7 +109,7 @@ class _PedidoScreenState extends State<PedidoScreen> {
                 IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: () => _showEditDialog(
-                    context, // Passa o BuildContext corretamente
+                    context,
                     pedidos[index]['id'],
                     pedidos[index]['prato'],
                     pedidos[index]['data'],
@@ -127,13 +125,9 @@ class _PedidoScreenState extends State<PedidoScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        
-        // child: Icon(Icons.add),
-        child: Icon(Icons.back_hand),
+        child: Icon(Icons.arrow_back), // Alterado para ícone de voltar
         onPressed: () {
-          // Exemplo para adicionar um novo pedido
-          // _addPedido('Speciale', '2024-10-02'); // Adiciona um novo pedido
-          Navigator.pushNamed(context, '/');
+           Navigator.pushReplacementNamed(context, '/');
         },
       ),
     );
