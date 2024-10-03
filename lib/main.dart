@@ -33,7 +33,7 @@ class Home extends StatelessWidget {
         elevation: 0,
         titleSpacing: 0,
         leading: Data(),
-        backgroundColor: Colors.orange,
+        backgroundColor: const Color.fromARGB(255, 247, 150, 4),
         title: Center(
           child: const Text('Escolha sua refeição'),
         ),

@@ -56,15 +56,34 @@ class _DiaadiaState extends State<Diaadia> {
           title: const Center(child: Text('Dia a dia')),
         ),
         body: Column(
-          children: [
+
+          children: [          
+              
+                SizedBox(
+                  width: double.infinity,
+                  height: 200,
+                  child: Image.asset(
+                    'assets/img/diaadia.jpg',
+                    fit: BoxFit.cover,
+                    ),
+                  ),              
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [              
-              ElevatedButton(onPressed: () {
-                print('Fazendo o pedido');
-                _fazerPedido('Dia a dia', '2024-10-02');              
-                
-              }, child: const Text("Fazer pedido")),
+              SizedBox(
+                width: 250,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    
+                  ),
+                  onPressed: () {
+                  print('Fazendo o pedido');
+                  _fazerPedido('Dia a dia', '2024-10-02');              
+                  
+                }, child: const Text("Fazer pedido", style: TextStyle(color: Colors.white),)),
+              ),
             ],),
 
 
