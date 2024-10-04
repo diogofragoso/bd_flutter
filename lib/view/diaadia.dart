@@ -53,7 +53,7 @@ class _DiaadiaState extends State<Diaadia> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.blue[500],
-          title: const Center(child: Text('Dia a dia')),
+          title: const Center(child: Text('Dia a dia', style: TextStyle(color: Colors.white, fontSize: 30),)),
         ),
         body: Column(
 
