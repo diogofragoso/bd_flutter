@@ -69,4 +69,10 @@ class Bd {
       whereArgs: [id],
     );
   }
+
+
+void exibaCaminho() async{
+print('Caminho: ${await getDatabasesPath()}');
+}
+
 }

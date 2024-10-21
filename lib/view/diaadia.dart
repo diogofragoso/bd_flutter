@@ -108,6 +108,7 @@ class _DiaadiaState extends State<Diaadia> {
                     ),
                     onPressed: () {
                       _fazerPedido('Clássico', '2024-10-04');
+                      
                     },
                     child: const Text(
                       "Fazer pedido",
